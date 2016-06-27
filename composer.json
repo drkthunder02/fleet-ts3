@@ -1,0 +1,14 @@
+{
+    "name": "drkthunder02/fleet-ts3",
+    "description": "Fleet TS3 Authorization Handler",
+    "authors": [
+        {
+            "name": "drkthunder02",
+            "email": "mancuso.christopher@gmail.com"
+        }
+    ],
+    "require": {
+        "EvELabs/oauth2-eveonline": "1.1.0",
+        "simplon/mysql": "dev-master"
+    }
+}
