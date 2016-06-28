@@ -5,7 +5,7 @@ session_start();
 $provider = new Evelabs\OAuth2\Client\Provider\EveOnline([
     'clientId'          => '0ec717c4e93146a9913396bedb3720b5',
     'clientSecret'      => 'tJkSWgWnoIGKmsRcoyOqZQP2xyTC8fJRWw4wB2ci ',
-    'redirectUri'       => 'http://ts3.astrocomical.com/fleet-ts3 ',
+    'redirectUri'       => 'http://ts3.astrocomical.com/fleet-ts3/index.php',
 ]);
 
 if (!isset($_GET['code'])) {
