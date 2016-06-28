@@ -14,9 +14,7 @@ if (!isset($_GET['code'])) {
     // make sure you have them enabled on your app page at
     // https://developers.eveonline.com/applications/
     $options = [
-        'scope' => ['publicData','characterLocationRead'], // array or string
-        'fleetRead' => ['privateData', 'fleetRead'],
-        'fleetWrite' => ['privateData', 'fleetWrite']
+        'scope' => ['publicData','characterLocationRead']
     ];
 
     // If we don't have an authorization code then get one
