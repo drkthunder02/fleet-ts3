@@ -9,12 +9,11 @@ $provider = new Evelabs\OAuth2\Client\Provider\EveOnline([
 ]);
 
 if (!isset($_GET['code'])) {
-    printf("In !isset GET");
     // here we can set requested scopes but it is totally optional
     // make sure you have them enabled on your app page at
     // https://developers.eveonline.com/applications/
     $options = [
-        'scope' => ['publicData','characterLocationRead']
+        'scope' => ['characterLocationRead']
     ];
 
     // If we don't have an authorization code then get one
@@ -26,7 +25,7 @@ if (!isset($_GET['code'])) {
 
 // Check given state against previously stored one to mitigate CSRF attack
 } elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-    printf("unset oauth2state");
+    
     unset($_SESSION['oauth2state']);
     exit('Invalid state');
 
@@ -36,12 +35,9 @@ if (!isset($_GET['code'])) {
     {
         printf("session token");
         // Try to get an access token (using the authorization code grant)
-        $_SESSION['token'] = $provider->getAccessToken('authorization_code', [
-            'code' => $_GET['code']
-        ]);
+        $_SESSION['token'] = $_GET['code'];
 
     }elseif($_SESSION['token']->hasExpired()){
-        printf("token expired");
         // This is how you refresh your access token once you have it
         $new_token = $provider->getAccessToken('refresh_token', [
             'refresh_token' => $_SESSION['token']->getRefreshToken()
@@ -52,7 +48,6 @@ if (!isset($_GET['code'])) {
 
     // Optional: Now you have a token you can look up a users profile data
     try {
-        printf("try");
         // We got an access token, let's now get the user's details
         $user = $provider->getResourceOwner($_SESSION['token']);
 
@@ -60,7 +55,6 @@ if (!isset($_GET['code'])) {
         printf('Hello %s! ', $user->getCharacterName());
 
     } catch (\Exception $e) {
-        printf("catch");
         // Failed to get user details
         exit('Oh dear...');
     }
