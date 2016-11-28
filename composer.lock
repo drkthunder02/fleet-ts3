@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8d2cea4caa3198221fd9d9adffe89910",
-    "content-hash": "5a94965347c1a05e815e9b017e9b85bb",
+    "hash": "b7bd4e3b14395ac38195248f8eb9d4be",
+    "content-hash": "28db73a3e8669669da533a0b9bd32b76",
     "packages": [
         {
             "name": "evelabs/oauth2-eveonline",
@@ -62,6 +62,49 @@
                 "oauth2"
             ],
             "time": "2016-02-11 19:22:38"
+        },
+        {
+            "name": "fuzzysteve/crestlibrary",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fuzzysteve/CrestLibrary.git",
+                "reference": "8e3697948f7c8cc291ccfd380dc899a0522c2fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fuzzysteve/CrestLibrary/zipball/8e3697948f7c8cc291ccfd380dc899a0522c2fac",
+                "reference": "8e3697948f7c8cc291ccfd380dc899a0522c2fac",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "*",
+                "tedivm/stash": "0.12.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "CrestLibrary": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Anderson",
+                    "email": "steve@fuzzysteve.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Crest Library for Eve Online",
+            "homepage": "https://github.com/fuzzysteve/CrestLibrary",
+            "keywords": [
+                "CREST",
+                "EVE Online"
+            ],
+            "time": "2014-12-09 17:05:25"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -539,6 +582,60 @@
                 "pdo"
             ],
             "time": "2016-05-13 14:06:48"
+        },
+        {
+            "name": "tedivm/stash",
+            "version": "v0.12.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tedious/Stash.git",
+                "reference": "5b830f6a0e4626e5cd02c862d37721ca16820a13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tedious/Stash/zipball/5b830f6a0e4626e5cd02c862d37721ca16820a13",
+                "reference": "5b830f6a0e4626e5cd02c862d37721ca16820a13",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "1.1.*",
+                "phpunit/phpunit": "4.3.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stash\\": "src/Stash/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Hafner",
+                    "email": "tedivm@tedivm.com"
+                },
+                {
+                    "name": "Josh Hall-Bachner",
+                    "email": "charlequin@gmail.com"
+                }
+            ],
+            "description": "The place to keep your cache.",
+            "homepage": "http://github.com/tedious/Stash",
+            "keywords": [
+                "apc",
+                "cache",
+                "caching",
+                "memcached",
+                "redis",
+                "sessions"
+            ],
+            "time": "2015-01-17 07:51:57"
         }
     ],
     "packages-dev": [],

@@ -10,6 +10,7 @@
     "require": {
         "EvELabs/oauth2-eveonline": "1.1.0",
         "simplon/mysql": "dev-master",
-        "planetteamspeak/ts3-php-framework": "1.1.24"
+        "planetteamspeak/ts3-php-framework": "1.1.24",
+        "fuzzysteve/crestlibrary": "1.0.0"
     }
 }

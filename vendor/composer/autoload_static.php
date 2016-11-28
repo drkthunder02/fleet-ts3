@@ -16,6 +16,7 @@ class ComposerStaticInit4f3993c00b08e032353f4bebdc1985f3
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
+            'Stash\\' => 6,
             'Simplon\\Mysql\\' => 14,
         ),
         'P' => 
@@ -39,6 +40,10 @@ class ComposerStaticInit4f3993c00b08e032353f4bebdc1985f3
     );
 
     public static $prefixDirsPsr4 = array (
+        'Stash\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tedivm/stash/src/Stash',
+        ),
         'Simplon\\Mysql\\' => 
         array (
             0 => __DIR__ . '/..' . '/simplon/mysql/src',
@@ -82,6 +87,13 @@ class ComposerStaticInit4f3993c00b08e032353f4bebdc1985f3
             'RandomLib' => 
             array (
                 0 => __DIR__ . '/..' . '/ircmaxell/random-lib/lib',
+            ),
+        ),
+        'C' => 
+        array (
+            'CrestLibrary' => 
+            array (
+                0 => __DIR__ . '/..' . '/fuzzysteve/crestlibrary/src',
             ),
         ),
     );

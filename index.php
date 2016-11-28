@@ -1,64 +1,34 @@
 <?php
-require_once('../vendor/autoload.php');
+
+require_once __DIR__.'/functions/registry.php';
+include __DIR__.'/functions/crest.php';
+
 session_start();
+include('auth_functions.php');
 
-$provider = new Evelabs\OAuth2\Client\Provider\EveOnline([
-    'clientId'          => '0ec717c4e93146a9913396bedb3720b5',
-    'clientSecret'      => 'tJkSWgWnoIGKmsRcoyOqZQP2xyTC8fJRWw4wB2ci ',
-    'redirectUri'       => 'http://ts3.astrocomical.com/fleet-ts3/index.php',
-]);
+RefreshToken();
 
-if (!isset($_GET['code'])) {
-    // here we can set requested scopes but it is totally optional
-    // make sure you have them enabled on your app page at
-    // https://developers.eveonline.com/applications/
-    $options = [
-        'scope' => ['characterLocationRead']
-    ];
-
-    // If we don't have an authorization code then get one
-    $authUrl = $provider->getAuthorizationUrl($options);
-    $_SESSION['oauth2state'] = $provider->getState();
-    unset($_SESSION['token']);
-    header('Location: '.$authUrl);
-    exit;
-
-// Check given state against previously stored one to mitigate CSRF attack
-} elseif (empty($_GET['state']) || ($_GET['state'] !== $_SESSION['oauth2state'])) {
-    
-    unset($_SESSION['oauth2state']);
-    exit('Invalid state');
-
+if (!isset($_SESSION['fleet_url'])) {
+    //If we do not have a fleet_url set, then let's print the form to make a new token
+    PrintNoFleetIndexPage();
+    //Stop performing code on the page until after the form is submitted
+    exit();
 } else {
-    // In this example we use php native $_SESSION as data store
-    if(!isset($_SESSION['token']))
-    {
-        printf("session token");
-        // Try to get an access token (using the authorization code grant)
-        $_SESSION['token'] = $_GET['code'];
-
-    }elseif($_SESSION['token']->hasExpired()){
-        // This is how you refresh your access token once you have it
-        $new_token = $provider->getAccessToken('refresh_token', [
-            'refresh_token' => $_SESSION['token']->getRefreshToken()
-        ]);
-        // Purge old access token and store new access token to your data store.
-        $_SESSION['token'] = $new_token;
-    }
-
-    // Optional: Now you have a token you can look up a users profile data
-    try {
-        // We got an access token, let's now get the user's details
-        $user = $provider->getResourceOwner($_SESSION['token']);
-
-        // Use these details to create a new profile
-        printf('Hello %s! ', $user->getCharacterName());
-
-    } catch (\Exception $e) {
-        // Failed to get user details
-        exit('Oh dear...');
-    }
-
-    // Use this to interact with an API on the users behalf
-    printf('Your access token is: %s', $_SESSION['token']->getToken());
+    $fleetUrl = $_SESSION['fleet_url'];
+    $fleetAuthToken = $_SESSION['fleet_auth_token'];
+    $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
+    //Extract the fleet number from the fleetUrl
+    $data = $fleetUrl;
+    $fleetId = substr($data, strpos($data, "fleets/") + 1);
+    $fleetId = str_replace("/", "", $fleetId);
+    //Store the fleet in the database
+    $expiry = $_SESSION['fleet_expiry'];
+    StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
+    
 }
+
+//Print the fleet listing
+PrintFleetListingPage($response);
+StoreFleet($response);
+
+?>
