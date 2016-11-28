@@ -5,12 +5,12 @@
     //Throw login redirect.
     $authsite = 'https://login.eveonline.com';
     $authurl = '/oauth/authorize';
-    $client_id = '123652c2803f49f9aa942b42960141a0';
+    $client_id = '0ec717c4e93146a9913396bedb3720b5';
     $state = uniqid();
 
     $redirecturl = $_SERVER['HTTP_REFERER'];
     
-    //$redirecturl = "https://ts3.astrocomical.com/fleet-ts3/";
+    $redirecturl = "https://ts3.astrocomical.com/fleet-ts3/";
 
     $_SESSION['auth_state'] = $state;
     $_SESSION['auth_redirect'] = $redirect_to;
