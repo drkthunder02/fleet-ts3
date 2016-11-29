@@ -30,7 +30,8 @@ if (!isset($_SESSION['fleet_url'])) {
     //Extract the fleet number from the fleetUrl
     $data = $fleetUrl;
     $fleetId = substr($data, strpos($data, "fleets/") + 1);
-    $fleetId = str_replace("/", "", $fleetId);
+    $fleetId = str_replace("[^0-9]", "", $fleetId);
+    
     //Store the fleet in the database
     $expiry = $_SESSION['fleet_expiry'];
     var_dump($expiry);
@@ -39,6 +40,7 @@ if (!isset($_SESSION['fleet_url'])) {
     printf("<br>");
     //Store the fleet in the database
     StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
+    
     /*
     $url=$_SESSION['fleet_url'];
     $ch = curl_init();
