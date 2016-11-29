@@ -28,9 +28,9 @@ if (!isset($_SESSION['fleet_url'])) {
     $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
     var_dump($response);
     //Extract the fleet number from the fleetUrl
-    $data = $fleetUrl;
-    $fleetId = substr($data, strpos($data, "fleets/") + 1);
-    $fleetId = str_replace("[^0-9]", "", $fleetId);
+    $fleetIdTemp = GetNumerics($fleetUrl);
+    //Store the value into fleet Id to be stored in the database
+    $fleetId = $fleetIdTemp[0];
     
     //Store the fleet in the database
     $expiry = $_SESSION['fleet_expiry'];

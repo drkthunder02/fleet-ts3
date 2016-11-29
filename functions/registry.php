@@ -23,4 +23,7 @@ require_once __DIR__.'/../functions/crest/autherror.php';
 require_once __DIR__.'/../functions/crest/fleetcontents.php';
 require_once __DIR__.'/../functions/crest/refreshtoken.php';
 
+//Miscellaneous Functions
+require_once __DIR__.'/../functions/misc/getnumerics.php';
+
 ?>
