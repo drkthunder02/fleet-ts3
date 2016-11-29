@@ -14,7 +14,15 @@ if (!isset($_SESSION['fleet_url'])) {
 } else {
     //If we have a fleet_url, let's check for the fleet in the database.
     //If it's not present then let's add the fleet to the database.
-    
+    $fleetUrl = $_SESSION['fleet_url'];
+    $fleetAuthToken = $_SESSION['fleet_auth_token'];
+    $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
+    //Extract the fleet number from the fleetUrl
+    $data = $fleetUrl;
+    $fleetId = substr($data, strpos($data, "fleets/") + 1);
+    $fleetId = str_replace("/", "", $fleetId);
+    //Store the fleet in the database
+    $expiry = $_SESSION['fleet_expiry'];
     //Store the fleet in the database
     StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
     /*
