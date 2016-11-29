@@ -47,7 +47,7 @@ if (isset($_SESSION['auth_state']) and isset($_GET['state']) and $_SESSION['auth
     $_SESSION['fleet_auth_token']=$auth_token;
     $_SESSION['fleet_refresh_token']=$refresh_token;
     session_write_close();
-    header("Location: /fleetTracker/");
+    header("Location: /fleet-ts3/");
 } else {
     echo "State is wrong. Did you make sure to actually hit the login url first?";
     error_log($_SESSION['auth_state']);
