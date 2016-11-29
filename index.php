@@ -12,6 +12,12 @@ if (!isset($_SESSION['fleet_url'])) {
     //Stop performing code on the page until after the form is submitted.
     exit();
 } else {
+    
+    $fleetUrl = $_SESSION['fleet_url'];
+    $fleetAuthToken = $_SESSION['fleet_auth_token'];    
+    $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
+    
+    /*
     $url=$_SESSION['fleet_url'];
     $ch = curl_init();
     $header='Authorization: Bearer '.$_SESSION['fleet_auth_token'];
@@ -27,6 +33,8 @@ if (!isset($_SESSION['fleet_url'])) {
     curl_setopt($ch, CURLOPT_URL, $url);
     $result = curl_exec($ch);
     $response=json_decode($result);
+     * 
+     */
 }
 
 PrintFleetListingPage($response);
