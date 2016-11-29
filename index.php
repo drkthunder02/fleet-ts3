@@ -57,6 +57,7 @@ foreach ($response->items as $member) {
     print "</tr>";
 
 }
+session_destroy();
 ?>
 </table>
 </body>
