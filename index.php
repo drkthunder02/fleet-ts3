@@ -1,5 +1,7 @@
 <?php
 session_start();
+//Includes
+require_once __DIR__.'/functions/registry.php';
 include('auth_functions.php');
 
 refresh_token();

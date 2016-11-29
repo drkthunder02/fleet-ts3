@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `CrestConfiguration` (
     `secret` varchar(100) NOT NULL,
     `callback_url` varchar(250) NOT NULL,
     `useragent` varchar(250) NOT NULL,
-    `redirect_uri` varchar(250) NOT NULL,
+    `redirect_uri` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -87,7 +87,9 @@ CREATE TABLE IF NOT EXISTS `FleetMembers` (
 CREATE TABLE IF NOT EXISTS `TS3Roles` (
     `index` int(11) NOT NULL AUTO_INCREMENT,
     `RoleName` varchar(50) NOT NULL,
-    `RoleNumber` int(3) NOT NULL
+    `RoleNumber` int(3) NOT NULL,
+    PRIMARY KEY (`index`),
+    UNIQUE KEY `index` (`index`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,5 +99,7 @@ CREATE TABLE IF NOT EXISTS `TS3Roles` (
 CREATE TABLE IF NOT EXISTS `TS3Channels` (
     `index` int(11) NOT NULL AUTO_INCREMENT,
     `ChannelID` int(5) NOT NULL,
-    `ChannelName` varchar(50) NOT NULL
+    `ChannelName` varchar(50) NOT NULL,
+    PRIMARY KEY (`index`),
+    UNIQUE KEY `index` (`index`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
