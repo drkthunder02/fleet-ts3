@@ -17,16 +17,7 @@ if (!isset($_SESSION['fleet_url'])) {
     $fleetUrl = $_SESSION['fleet_url'];
     $fleetAuthToken = $_SESSION['fleet_auth_token'];
     $useragent="TS3 Fleet Permissions";
-    var_dump($fleetUrl);
-    printf("<br>");
-    var_dump($fleetAuthToken);
-    printf("<br>");
-    var_dump($useragent);
-    printf("<br>");
-    var_dump($_SESSION['fleet_auth_token']);
-    printf("<br>");
     $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
-    var_dump($response);
     //Extract the fleet number from the fleetUrl
     $fleetIdTemp = GetNumerics($fleetUrl);
     //Store the value into fleet Id to be stored in the database
@@ -34,14 +25,33 @@ if (!isset($_SESSION['fleet_url'])) {
     
     //Store the fleet in the database
     $expiry = $_SESSION['fleet_expiry'];
-    var_dump($expiry);
-    printf("<br>");
-    var_dump($fleetId);
-    printf("<br>");
     //Store the fleet in the database
     //StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
 }
 
-PrintFleetListingPage($response);
+//PrintFleetListingPage($response);
 
 ?>
+
+<html>
+<head><title>Fleet Tracker Example</title></head>
+<body>
+<table>
+<tr><th>Name</th><th>Location</th><th>Docked at</th><th>Ship</th></tr>
+<?php
+foreach ($response->items as $member) {
+    print "<tr><td>".$member->character->name."</td>";
+    print "<td>".$member->solarSystem->name."</td>";
+    if (isset($member->station)) {
+        print "<td>".$member->station->name."</td>";
+    } else {
+        print "<td>Undocked</td>";
+    }
+    print "<td>".$member->ship->name."</td>";
+    print "</tr>";
+
+}
+?>
+</table>
+</body>
+</html>
