@@ -3,7 +3,6 @@
 function StoreFleet($response, $fleetAuthToken, $fleetNumber, $expiry) {
     //Open the database connection
     $db = DBOpen();
-    
     //Store the auth token for future use
     $db->insert('CrestVariables', array('FleetID' => $fleetNumber, 'AuthToken' => $fleetAuthToken, 'AuthTokenExpiry' => $expiry));
     

@@ -14,6 +14,10 @@ if (!isset($_SESSION['fleet_url'])) {
 } else {
     //If we have a fleet_url, let's check for the fleet in the database.
     //If it's not present then let's add the fleet to the database.
+    
+    //Store the fleet in the database
+    StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
+    /*
     $url=$_SESSION['fleet_url'];
     $ch = curl_init();
     $header='Authorization: Bearer '.$_SESSION['fleet_auth_token'];
@@ -29,6 +33,8 @@ if (!isset($_SESSION['fleet_url'])) {
     curl_setopt($ch, CURLOPT_URL, $url);
     $result = curl_exec($ch);
     $response=json_decode($result);
+     * 
+     */
 
 }
 
