@@ -17,7 +17,14 @@ if (!isset($_SESSION['fleet_url'])) {
     $fleetUrl = $_SESSION['fleet_url'];
     $fleetAuthToken = $_SESSION['fleet_auth_token'];
     $useragent="TS3 Fleet Permissions";
+    var_dump($fleetUrl);
+    printf("<br>");
+    var_dump($fleetAuthToken);
+    printf("<br>");
+    var_dump($useragent);
+    printf("<br>");
     $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
+    var_dump($response);
     //Extract the fleet number from the fleetUrl
     $data = $fleetUrl;
     $fleetId = substr($data, strpos($data, "fleets/") + 1);
