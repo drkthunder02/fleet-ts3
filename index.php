@@ -39,27 +39,7 @@ if (!isset($_SESSION['fleet_url'])) {
     var_dump($fleetId);
     printf("<br>");
     //Store the fleet in the database
-    StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
-    
-    /*
-    $url=$_SESSION['fleet_url'];
-    $ch = curl_init();
-    $header='Authorization: Bearer '.$_SESSION['fleet_auth_token'];
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_USERAGENT, $useragent);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array($header));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-    $result = curl_exec($ch);
-    $response=json_decode($result);
-    $url=$response->members->href;
-    curl_setopt($ch, CURLOPT_URL, $url);
-    $result = curl_exec($ch);
-    $response=json_decode($result);
-     * 
-     */
-
+    //StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
 }
 
 PrintFleetListingPage($response);
