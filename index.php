@@ -4,20 +4,12 @@ session_start();
 require_once __DIR__.'/functions/registry.php';
 include('auth_functions.php');
 
-refresh_token();
+RefreshToken();
 
 if (!isset($_SESSION['fleet_url'])) {
-    ?>
-    <html>
-    <head><title>Enter Fleet URL</title></head>
-    <body>
-    <form action="formFleet.php">
-    <label for="url">Enter Fleet URL (copy from the fleet drop down while boss)</label><input type="text" name=url>
-    <input type=submit>
-    </form>
-    </body>
-    </html>
-    <?php
+    
+    PrintNoFleetIndexPage();
+    
     exit();
 } else {
     $url=$_SESSION['fleet_url'];
