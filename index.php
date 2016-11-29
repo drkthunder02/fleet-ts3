@@ -7,11 +7,13 @@ include('auth_functions.php');
 RefreshToken();
 
 if (!isset($_SESSION['fleet_url'])) {
-    
+    //If we do not have a fleet_url set yet, then let's print the form to make a new token
     PrintNoFleetIndexPage();
-    
+    //Stop performing code on the page until after the form is submitted.
     exit();
 } else {
+    //If we have a fleet_url, let's check for the fleet in the database.
+    //If it's not present then let's add the fleet to the database.
     $url=$_SESSION['fleet_url'];
     $ch = curl_init();
     $header='Authorization: Bearer '.$_SESSION['fleet_auth_token'];
@@ -29,28 +31,7 @@ if (!isset($_SESSION['fleet_url'])) {
     $response=json_decode($result);
 
 }
-?>
 
-<html>
-<head><title>Fleet Tracker Example</title></head>
-<body>
-<table>
-<tr><th>Name</th><th>Location</th><th>Docked at</th><th>Ship</th></tr>
-<?php
-foreach ($response->items as $member) {
-    print "<tr><td>".$member->character->name."</td>";
-    print "<td>".$member->solarSystem->name."</td>";
-    if (isset($member->station)) {
-        print "<td>".$member->station->name."</td>";
-    } else {
-        print "<td>Undocked</td>";
-    }
-    print "<td>".$member->ship->name."</td>";
-    print "</tr>";
+PrintFleetListingPage($response);
 
-}
-session_destroy();
 ?>
-</table>
-</body>
-</html>
