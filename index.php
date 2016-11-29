@@ -33,6 +33,10 @@ if (!isset($_SESSION['fleet_url'])) {
     $fleetId = str_replace("/", "", $fleetId);
     //Store the fleet in the database
     $expiry = $_SESSION['fleet_expiry'];
+    var_dump($expiry);
+    printf("<br>");
+    var_dump($fleetId);
+    printf("<br>");
     //Store the fleet in the database
     StoreFleet($response, $fleetAuthToken, $fleetId, $expiry);
     /*
