@@ -23,6 +23,8 @@ if (!isset($_SESSION['fleet_url'])) {
     printf("<br>");
     var_dump($useragent);
     printf("<br>");
+    var_dump($_SESSION['fleet_auth_token']);
+    printf("<br>");
     $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
     var_dump($response);
     //Extract the fleet number from the fleetUrl
