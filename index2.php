@@ -3,7 +3,6 @@
 require_once __DIR__.'/functions/registry.php';
 include __DIR__.'/functions/crest.php';
 
-session_start();
 include('auth_functions.php');
 
 RefreshToken();

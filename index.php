@@ -18,7 +18,12 @@ if (!isset($_SESSION['fleet_url'])) {
     $response = FleetContents($fleetUrl, $fleetAuthToken, $useragent);
 }
 
-PrintFleetListingPage($response);
+if($response) {
+    //Print the fleet listing
+    PrintFleetListingPage($response);
+    //Store the fleet for future use
+}
+
 
 ?>
 

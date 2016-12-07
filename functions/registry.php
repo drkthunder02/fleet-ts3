@@ -4,6 +4,9 @@
 //Vendor Autoload functions
 require_once __DIR__.'/../vendor/autoload.php';
 
+//Session Functions
+require_once __DIR__.'/../functions/class/sessions.php';
+
 //Database Functions
 require_once __DIR__.'/../functions/database/dbclose.php';
 require_once __DIR__.'/../functions/database/dbopen.php';
