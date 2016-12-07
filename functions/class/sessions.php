@@ -1,7 +1,8 @@
 <?php
 
+namespace Custom\Session;
 
-class sessions {
+class Sessions {
     //The database object in order to store the session data in a mysql database
     private $db;
     
